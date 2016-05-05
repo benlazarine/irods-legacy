@@ -648,6 +648,7 @@ rodsSetSockOpt (int sock, int windowSize)
     if (status < 0)
         savedStatus = status;
 #else
+#if 0
     status = setsockopt (sock, SOL_SOCKET, SO_SNDBUF, 
       &windowSize, sizeof (windowSize));
     if (status < 0) 
@@ -657,6 +658,7 @@ rodsSetSockOpt (int sock, int windowSize)
       &windowSize, sizeof (windowSize));
     if (status < 0) 
         savedStatus = status;
+#endif
 
     temp = 1;
     status = setsockopt (sock, IPPROTO_TCP, TCP_NODELAY,
